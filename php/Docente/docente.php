@@ -66,13 +66,11 @@
               <h2 class="center light-blue-text">
                 <i class="material-icons">flash_on</i>
               </h2>
-              <h5 class="center">Crea un nuevo Grupo</h5>
+              <h5 class="center">Crea todo tipo de Publicaciones</h5>
 
               <p class="light">
-                We did most of the heavy lifting for you to provide a default
-                stylings that incorporate our custom components. Additionally,
-                we refined animations and transitions to provide a smoother
-                experience for developers.
+                VRooms te permite crear todo tipo de publicaciones dirigidas a tus grupos,
+                de tal manera que puedes dar avisos a un grupo en especifico o incluso a los docentes.
               </p>
             </div>
           </div>
@@ -82,14 +80,11 @@
               <h2 class="center light-blue-text">
                 <i class="material-icons">group</i>
               </h2>
-              <h5 class="center">Ve tus alumnos por grupo</h5>
+              <h5 class="center">Visualiza a tus alumnos</h5>
 
               <p class="light">
-                By utilizing elements and principles of Material Design, we were
-                able to create a framework that incorporates components and
-                animations that provide more feedback to users. Additionally, a
-                single underlying responsive system across all platforms allow
-                for a more unified user experience.
+                En la seccion de alumnos podrás ver a todos los alumnos registrados
+                en la plataforma VRooms para tener un control de cada uno de ellos. 
               </p>
             </div>
           </div>
@@ -102,10 +97,9 @@
               <h5 class="center">Crea y Visualiza tu horario</h5>
 
               <p class="light">
-                We have provided detailed documentation as well as specific code
-                examples to help new users get started. We are also always open
-                to feedback and can answer any questions a user may have about
-                Materialize.
+                Sube todo tipo de imagenes de tus horarios a la plataforma,
+                de tal manera que tengas todo en un solo lugar! En cualquier momento
+                puedes eliminar tus horarios antiguos y subir nuevos.
               </p>
             </div>
           </div>

@@ -36,7 +36,7 @@
     
     <div class="parallax-container">
       <div class="parallax">
-        <img src="../../img/bg4.jpg" />
+        <img src="../../img/bg5.jpg"/>
       </div>
 
       <div class="section no-pad-bot" id="index-banner">
@@ -80,6 +80,7 @@
           echo      '</div>';
           echo      '<div class="card-action">';
           echo        '<a class="blue-grey-text" href="editarPublicacion.php?idPub='.$row["id_publicacion"].'">Editar</a>';
+          echo        '<a class="red-text" href="eliminarPublicacion.php?idPub='.$row["id_publicacion"].'">Eliminar</a>';
           echo      '</div>';
           echo    '</div>';
           echo  '</div>';
