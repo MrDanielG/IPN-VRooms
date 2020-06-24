@@ -21,7 +21,7 @@ USE `ipn_db` ;
 -- Table `ipn_db`.`grupo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ipn_db`.`grupo` (
-  `id_grupo` INT(11) NOT NULL,
+  `id_grupo` VARCHAR(45) NOT NULL,
   `semestre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_grupo`))
 ENGINE = InnoDB
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `ipn_db`.`usuario` (
   `num_boleta` INT(10) NOT NULL,
   `clave` VARCHAR(100) NOT NULL,
   `tipo_usuario` VARCHAR(45) NOT NULL,
-  `id_grupo` INT(11) NULL DEFAULT NULL,
+  `id_grupo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`num_boleta`),
   INDEX `fk_usuario_grupo1_idx` (`id_grupo` ASC) ,
   CONSTRAINT `fk_usuario_grupo1`
@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `ipn_db`.`persona` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -78,37 +79,22 @@ CREATE TABLE IF NOT EXISTS `ipn_db`.`publicacion` (
   `fecha` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `num_boleta` INT(10) NOT NULL,
+  `id_grupo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_publicacion`),
   INDEX `fk_publicacion_usuario1_idx` (`num_boleta` ASC) ,
+  INDEX `fk_publicacion_grupo1_idx` (`id_grupo` ASC) ,
   CONSTRAINT `fk_publicacion_usuario1`
     FOREIGN KEY (`num_boleta`)
     REFERENCES `ipn_db`.`usuario` (`num_boleta`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `ipn_db`.`post_has_grupo`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ipn_db`.`post_has_grupo` (
-  `id_post` INT(11) NOT NULL,
-  `id_grupo` INT(11) NOT NULL,
-  PRIMARY KEY (`id_post`, `id_grupo`),
-  INDEX `fk_post_has_grupo_grupo1_idx` (`id_grupo` ASC) ,
-  INDEX `fk_post_has_grupo_post1_idx` (`id_post` ASC) ,
-  CONSTRAINT `fk_post_has_grupo_grupo1`
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_publicacion_grupo1`
     FOREIGN KEY (`id_grupo`)
     REFERENCES `ipn_db`.`grupo` (`id_grupo`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_post_has_grupo_post1`
-    FOREIGN KEY (`id_post`)
-    REFERENCES `ipn_db`.`publicacion` (`id_publicacion`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = utf8;
 
 

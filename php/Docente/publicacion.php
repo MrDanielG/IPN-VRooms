@@ -74,6 +74,18 @@
                       />
                       <label for="input_text">Asunto</label>
                     </div>
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">mode_edit</i>
+                      <input
+                        id="input_text"
+                        type="text"
+                        data-length="45"
+                        name="asuntoInp"
+                        id="asuntoInp"
+                        require
+                      />
+                      <label for="input_text">Asunto</label>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
