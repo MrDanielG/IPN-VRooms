@@ -30,10 +30,8 @@
   </head>
 
   <body>
-
     <div class="includeMenuDocente"></div>
 
-    
     <div class="parallax-container">
       <div class="parallax">
         <img src="../../img/bg4.jpg" />
@@ -49,53 +47,50 @@
             </h5>
           </div>
           <div class="row center">
-          <a
-            href="crearHorario.php"
-            id="download-button"
-            class="btn-large waves-effect waves-light orange"
-            >Crea un Nuevo Horario</a
-          >
-        </div>
+            <a
+              href="crearHorario.php"
+              id="download-button"
+              class="btn-large waves-effect waves-light orange"
+              >Crea un Nuevo Horario</a
+            >
+          </div>
         </div>
       </div>
-    </div> <br>
+    </div>
+    <br />
 
     <div class="container">
-
-    
+          
     <?php 
       include "../conexion.php";
-      $queryPublicaciones = "SELECT * FROM `publicacion` WHERE num_boleta = " . $_SESSION['usuario']; 
-      $resultPub = $conexion->query($queryPublicaciones);
+      $queryHorario = "SELECT * FROM `horario` WHERE num_boleta = " . $_SESSION['usuario']; 
+      $resultHorario = $conexion->query($queryHorario);
 
-      if($resultPub->num_rows > 0){ 
-        while($row = $resultPub->fetch_assoc()) { 
+      if($resultHorario->num_rows > 0){ 
+        while($row = $resultHorario->fetch_assoc()) { 
 
-          $queryNombre = "SELECT * FROM `persona` WHERE num_boleta = " . $row["num_boleta"];
-          $resultNombre = $conexion->query($queryNombre)->fetch_assoc();
-          $nombreComp = $resultNombre["nombre"] . ' ' . $resultNombre["paterno"] . ' ' . $resultNombre["materno"];
-
-          echo '<div class="container">';
-          echo '<div class="row">';
-          echo  '<div class="col s12 m6 l12">';
-          echo   '<div class="card">';
-          echo      '<div class="card-content">';
-          echo        '<span class="card-title orange-text">' . $row["asunto"] . '</span>';
-          echo        '<p class="teal-text">' . $row["fecha"] . '</p>';
-          echo        '<p>';
-          echo         $row["contenido"];
-          echo        '</p>';
-          echo      '</div>';
-          echo      '<div class="card-action">';
-          echo        '<a class="blue-grey-text" href="editarPublicacion.php?idPub='.$row["id_publicacion"].'">Editar</a>';
+          echo  '<div class="container center">';
+          echo  '<div class="container center">';
+          echo    '<div class="row">';
+          echo      '<div class="col s12 m12">';
+          echo        '<div class="card">';
+          echo          '<div class="card-image">';
+          echo            '<img src="../../img/horarios/'. $row["img"] .'" />';
+          echo            '<span class="card-title">'. $row["titulo"] .'</span>';
+          echo            '<a class="btn-floating halfway-fab waves-effect waves-light red" href="deleteHorario.php?idHorario='.$row["id_horario"].'"';
+          echo              '><i class="material-icons">delete</i></a';
+          echo            '>';
+          echo          '</div>';
+          echo          '<div class="card-content"></div>';
+          echo        '</div>';
           echo      '</div>';
           echo    '</div>';
           echo  '</div>';
           echo '</div>';
-          echo '</div>';
         } 
       }
     ?>
+
     </div>
 
     <div class="includeFooter"></div>
@@ -114,13 +109,12 @@
         $(".includeMenuDocente").load("../modules/menuDocente.html");
       });
 
-      $.ajaxSetup ({
-          cache: false
+      $.ajaxSetup({
+        cache: false,
       });
     </script>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
-
   </body>
 </html>
