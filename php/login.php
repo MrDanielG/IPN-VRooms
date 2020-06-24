@@ -25,7 +25,7 @@ if ($boleta == $numBoleta && password_verify($contra, $hash)) { //Decripta Contr
     $_SESSION['nombre'] = $nombreUsr;
 
     if ($tipoUsr == 'Docente') {
-        header('Location: '. 'docente.php');
+        header('Location: '. 'Docente/docente.php');
     } else {
         header('Location: '. 'alumno.php');
     }

@@ -14,7 +14,7 @@
     <link
       type="text/css"
       rel="stylesheet"
-      href="../css/materialize.min.css"
+      href="../../css/materialize.min.css"
       media="screen,projection"
     />
 
@@ -30,23 +30,8 @@
   </head>
 
   <body>
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">IPN VRooms</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Publicaciones</a></li>
-          <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
-        </ul>
 
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Publicaciones</a></li>
-          <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-      </div>
-    </nav>
+    <div class="includeMenuDocente"></div>
 
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
@@ -62,7 +47,7 @@
         </div>
         <div class="row center">
           <a
-            href="../php/Docente/publicaciones.php"
+            href="publicacion.php"
             id="download-button"
             class="btn-large waves-effect waves-light orange"
             >Crear Publicación</a
@@ -138,12 +123,20 @@
       });
 
       $(function () {
-        $(".includeFooter").load("modules/footer.html");
+        $(".includeFooter").load("../modules/footer.html");
+      });
+
+      $(function () {
+        $(".includeMenuDocente").load("../modules/menuDocente.html");
+      });
+
+      $.ajaxSetup ({
+          cache: false
       });
     </script>
 
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../js/materialize.min.js"></script>
 
   </body>
 </html>

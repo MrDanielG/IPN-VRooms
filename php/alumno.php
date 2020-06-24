@@ -96,7 +96,7 @@
           echo      '</div>';
           echo      '<div class="card-action">';
           echo        '<p class="blue-grey-text">' . $nombreComp . '</p>';
-           echo       '</div>';
+           echo     '</div>';
           echo    '</div>';
           echo  '</div>';
           echo '</div>';
@@ -115,6 +115,10 @@
 
       $(function () {
         $(".includeFooter").load("modules/footer.html");
+      });
+
+      $.ajaxSetup ({
+          cache: false
       });
     </script>
 

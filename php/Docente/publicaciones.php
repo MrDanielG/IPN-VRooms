@@ -20,7 +20,6 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <script
@@ -30,93 +29,66 @@
     ></script>
   </head>
 
-  <body class="grey lighten-5">
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">IPN VRooms</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="../../index.html">Cerrar Sesión</a></li>
-        </ul>
+  <body>
 
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="../../index.html">Cerrar Sesión</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
+    <div class="includeMenuDocente"></div>
+
+    
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="../../img/bg2.jpg" />
       </div>
-    </nav>
 
-    <div class="section no-pad-bot" id="index-banner">
-      <div class="container">
-        <br /><br />
-        <h1 class="header center orange-text">Crea una Publicación</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">
-            Ya sea una tarea, aviso, lo que sea!
-          </h5>
-        </div>
-        <div class="row center"></div>
-        <br /><br />
-      </div>
-    </div>
-
-    <form
-      class="col s12"
-      action="crearPublicacion.php"
-      method="GET"
-      id="publicacionForm"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col s12 m6 l12">
-            <div class="card">
-              <div class="card-content">
-                <span class="card-title">Nueva Publicacion</span>
-                <div class="row">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">mode_edit</i>
-                      <input
-                        id="input_text"
-                        type="text"
-                        data-length="45"
-                        name="asuntoInp"
-                        id="asuntoInp"
-                        require
-                      />
-                      <label for="input_text">Asunto</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">assignment</i>
-                      <textarea
-                        class="materialize-textarea"
-                        data-length="500"
-                        form="publicacionForm"
-                        name="contenidoInp"
-                        id="contenidoInp"
-                        require
-                      ></textarea>
-                      <label for="contenidoInp">Contenido</label>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  class="btn waves-effect waves-light orange"
-                  type="submit"
-                  name="action"
-                >
-                  Crear
-                  <i class="material-icons right">send</i>
-                </button>
-              </div>
-            </div>
+      <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+          <br /><br />
+          <h1 class="header center orange-text">Tus Publicaciones</h1>
+          <div class="row center">
+            <h5 class="header col s12 light white-text">
+              Visualiza y Edita tus publicaciones
+            </h5>
           </div>
         </div>
       </div>
-    </form>
+    </div> <br>
+
+    <div class="container">
+
+    
+    <?php 
+      include "../conexion.php";
+      $queryPublicaciones = "SELECT * FROM `publicacion` WHERE num_boleta = " . $_SESSION['usuario']; 
+      $resultPub = $conexion->query($queryPublicaciones);
+
+      if($resultPub->num_rows > 0){ 
+        while($row = $resultPub->fetch_assoc()) { 
+
+          $queryNombre = "SELECT * FROM `persona` WHERE num_boleta = " . $row["num_boleta"];
+          $resultNombre = $conexion->query($queryNombre)->fetch_assoc();
+          $nombreComp = $resultNombre["nombre"] . ' ' . $resultNombre["paterno"] . ' ' . $resultNombre["materno"];
+
+          echo '<div class="container">';
+          echo '<div class="row">';
+          echo  '<div class="col s12 m6 l12">';
+          echo   '<div class="card">';
+          echo      '<div class="card-content">';
+          echo        '<span class="card-title orange-text">' . $row["asunto"] . '</span>';
+          echo        '<p class="teal-text">' . $row["fecha"] . '</p>';
+          echo        '<p>';
+          echo         $row["contenido"];
+          echo        '</p>';
+          echo      '</div>';
+          echo      '<div class="card-action">';
+          echo        '<p class="blue-grey-text">' . $nombreComp . '</p>';
+          echo      '</div>';
+          echo    '</div>';
+          echo  '</div>';
+          echo '</div>';
+          echo '</div>';
+        } 
+      }
+    ?>
+    </div>
 
     <div class="includeFooter"></div>
 
@@ -126,24 +98,21 @@
         var instances = M.Parallax.init(elems);
       });
 
-      $(document).ready(function () {
-        $("input#input_text, textarea#contenidoInp").characterCounter();
-      });
-
-      $(function () {
-        $(".includeMenu").load("../modules/menuAlumno.php");
-      });
-
-      $(function () {
-        $(".includeMenuDocente").load("../modules/menuAlumno.php");
-      });
-
       $(function () {
         $(".includeFooter").load("../modules/footer.html");
+      });
+
+      $(function () {
+        $(".includeMenuDocente").load("../modules/menuDocente.html");
+      });
+
+      $.ajaxSetup ({
+          cache: false
       });
     </script>
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
+
   </body>
 </html>
