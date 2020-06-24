@@ -73,7 +73,8 @@
 
     <?php 
       include "conexion.php";
-      $queryPublicaciones = "SELECT * FROM `publicacion` WHERE 1"; 
+      $grupoUsr = $_SESSION['grupo'];
+      $queryPublicaciones = "SELECT * FROM `publicacion` WHERE `id_grupo` = '$grupoUsr'"; 
       $resultPub = $conexion->query($queryPublicaciones);
 
       if($resultPub->num_rows > 0){ 
@@ -96,7 +97,7 @@
           echo      '</div>';
           echo      '<div class="card-action">';
           echo        '<p class="blue-grey-text">' . $nombreComp . '</p>';
-           echo     '</div>';
+          echo     '</div>';
           echo    '</div>';
           echo  '</div>';
           echo '</div>';

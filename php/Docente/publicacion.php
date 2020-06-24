@@ -75,16 +75,16 @@
                       <label for="input_text">Asunto</label>
                     </div>
                     <div class="input-field col s6">
-                      <i class="material-icons prefix">mode_edit</i>
-                      <input
-                        id="input_text"
-                        type="text"
-                        data-length="45"
-                        name="asuntoInp"
-                        id="asuntoInp"
-                        require
-                      />
-                      <label for="input_text">Asunto</label>
+                      <select name="grupoInp" id="grupoInp" required>
+                        <option selected disabled>¿A quien va dirigido?</option>
+                        <option value="6IM1">6IM1</option>
+                        <option value="6IM2">6IM2</option>
+                        <option value="6IM3">6IM3</option>
+                        <option value="6IM4">6IM4</option>
+                        <option value="6IM5">6IM5</option>
+                        <option value="Docente">Docentes</option>
+                      </select>
+                      <label>Selecciona un Grupo</label>
                     </div>
                   </div>
                   <div class="row">
@@ -139,6 +139,10 @@
 
       $.ajaxSetup ({
           cache: false
+      });
+
+      $(document).ready(function(){
+        $('select').formSelect();
       });
     </script>
 
