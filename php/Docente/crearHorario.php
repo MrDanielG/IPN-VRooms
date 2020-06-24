@@ -1,5 +1,8 @@
 <?php
+  include "../conexion.php";
   session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +52,9 @@
 
     <form
       class="col s12"
-      action="crearPublicacion.php"
-      method="GET"
+      action="insertHorario.php"
+      method="POST"
+      enctype="multipart/form-data"
       id="publicacionForm"
     >
       <div class="container center">
@@ -83,7 +87,7 @@
                     <div class="file-field input-field">
                       <div class="btn">
                         <span>Imagen</span>
-                        <input type="file" />
+                        <input type="file" name="file" />
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" />
