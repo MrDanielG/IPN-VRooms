@@ -36,7 +36,7 @@
     
     <div class="parallax-container">
       <div class="parallax">
-        <img src="../../img/bg2.jpg" />
+        <img src="../../img/bg4.jpg" />
       </div>
 
       <div class="section no-pad-bot" id="index-banner">
