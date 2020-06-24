@@ -22,56 +22,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
   </head>
 
-  <body>
+  <body class="grey lighten-5">
     <nav class="light-blue lighten-1" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo">IPN VRooms</a>
         <ul class="right hide-on-med-and-down">
-        <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
+          <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-        <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
+          <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
         >
       </div>
     </nav>
-    <!-- 
-    <div class="parallax-container">
-      <div class="parallax">
-        <img src="../img/bg2.jpg" />
-      </div>
-
-      <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-          <br /><br />
-          <h1 class="header center orange-text">Bienvenido</h1>
-          <div class="row center">
-            <h5 class="header col s12 light">
-              La nuev aplataforma escolar diseñada especificamente para el IPN
-            </h5>
-          </div>
-          <div class="row center">
-            <a
-              href="http://materializecss.com/getting-started.html"
-              id="download-button"
-              class="btn-large waves-effect waves-light orange"
-              >Get Started</a
-            >
-          </div>
-          <br /><br />
-        </div>
-      </div>
-    </div> -->
 
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
         <br /><br />
-        <h1 class="header center orange-text">Bienvenido <?php echo $_SESSION["nombre"]?></h1>
+        <h1 class="header center orange-text">
+          Bienvenido
+          <?php echo $_SESSION["nombre"]?>
+        </h1>
         <div class="row center">
           <h5 class="header col s12 light">
             VRooms la nueva plataforma escolar diseñada para el IPN
@@ -82,34 +64,46 @@
             href="http://materializecss.com/getting-started.html"
             id="download-button"
             class="btn-large waves-effect waves-light orange"
-            >Get Started</a
+            >xdxdxd</a
           >
         </div>
         <br /><br />
       </div>
     </div>
 
-    <div class="container">
-      <div class="col s12 m7">
-        <h3 class="header">Tus Publicaciones</h3>
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6" />
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>
-                I am a very simple card. I am good at containing small bits of
-                information.
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php 
+      include "conexion.php";
+      $queryPublicaciones = "SELECT * FROM `publicacion` WHERE 1"; 
+      $resultPub = $conexion->query($queryPublicaciones);
+
+      if($resultPub->num_rows > 0){ 
+        while($row = $resultPub->fetch_assoc()) { 
+
+          $queryNombre = "SELECT * FROM `persona` WHERE num_boleta = " . $row["num_boleta"];
+          $resultNombre = $conexion->query($queryNombre)->fetch_assoc();
+          $nombreComp = $resultNombre["nombre"] . ' ' . $resultNombre["paterno"] . ' ' . $resultNombre["materno"];
+
+          echo '<div class="container">';
+          echo '<div class="row">';
+          echo  '<div class="col s12 m6 l12">';
+          echo   '<div class="card">';
+          echo      '<div class="card-content">';
+          echo        '<span class="card-title orange-text">' . $row["asunto"] . '</span>';
+          echo        '<p class="teal-text">' . $row["fecha"] . '</p>';
+          echo        '<p>';
+          echo         $row["contenido"];
+          echo        '</p>';
+          echo      '</div>';
+          echo      '<div class="card-action">';
+          echo        '<p class="blue-grey-text">' . $nombreComp . '</p>';
+           echo       '</div>';
+          echo    '</div>';
+          echo  '</div>';
+          echo '</div>';
+          echo '</div>';
+        } 
+      }
+    ?>
 
     <div class="includeFooter"></div>
 
@@ -128,3 +122,5 @@
     <script type="text/javascript" src="../js/materialize.min.js"></script>
   </body>
 </html>
+
+

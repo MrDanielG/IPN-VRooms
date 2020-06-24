@@ -77,11 +77,11 @@ CREATE TABLE IF NOT EXISTS `ipn_db`.`publicacion` (
   `contenido` VARCHAR(500) NOT NULL,
   `fecha` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
-  `id_usuario` INT(11) NOT NULL,
+  `num_boleta` INT(10) NOT NULL,
   PRIMARY KEY (`id_publicacion`),
-  INDEX `fk_post_usuario1_idx` (`id_usuario` ASC) ,
-  CONSTRAINT `fk_post_usuario1`
-    FOREIGN KEY (`id_usuario`)
+  INDEX `fk_publicacion_usuario1_idx` (`num_boleta` ASC) ,
+  CONSTRAINT `fk_publicacion_usuario1`
+    FOREIGN KEY (`num_boleta`)
     REFERENCES `ipn_db`.`usuario` (`num_boleta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

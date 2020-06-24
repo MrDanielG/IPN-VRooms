@@ -9,7 +9,7 @@ $fecha = date("d/m/Y");
 $estado = "ACTIVO";
 $idUsuario = $_SESSION['usuario'];
 
-$queryNewPost = "INSERT INTO `publicacion`(`asunto`, `contenido`, `fecha`, `estado`, `id_usuario`) 
+$queryNewPost = "INSERT INTO `publicacion`(`asunto`, `contenido`, `fecha`, `estado`, `num_boleta`) 
                                    VALUES ('$asunto', '$contenido', '$fecha', '$estado', $idUsuario)";
 
 if ($conexion->query($queryNewPost)){
