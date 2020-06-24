@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../styles/loginStyles.css" />
+    <script src="../scripts/scripts.js"></script>
+    <title>Login Redes</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="imgLogin"></div>
+      <div class="formulario">
+        <h1>Inicia Sesion</h1>
+
+        <form action="../php/login.php" method="GET">
+          <input
+            type="number"
+            name="usernameInp"
+            id="usernameInp"
+            placeholder="Número de Matrícula"
+            oninput="verificar()"
+          />
+          <br />
+          <div id="verificaUsr"></div>
+
+          <input
+            type="password"
+            name="passwordInp"
+            id="passwordInp"
+            placeholder="Contraseña"
+            oninput="verificarInp()"
+          />
+          <br />
+          <div id="verificaContra"></div>
+
+          <button type="submit" class="btnIngresar" id="btnIngresar">
+            Ingresar
+          </button>
+        </form>
+        <div class="resultado"><a href="registro.html">Registrarse</a></div>
+      </div>
+    </div>
+  </body>
+</html>
