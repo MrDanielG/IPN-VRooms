@@ -6,7 +6,7 @@ $query = "SELECT * FROM usuario WHERE num_boleta = '$nombreUsuario'";
 
 $resultado = $conexion->query($query);
 if ($resultado->num_rows <= 0) {
-    echo 'Número de Boleta Disponible';
+    echo 'Usuario no Registrado';
 } else {
-    echo 'Número de Boleta Ocupado, utilize otro';
+    echo 'Usuario Registrado';
 }
