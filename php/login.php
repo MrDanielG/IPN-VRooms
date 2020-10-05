@@ -16,8 +16,8 @@ $tipoUsr = $resultUsuario['tipo_usuario'];
 $nombreUsr = $resultNombre['nombre'];
 $grupoUsr = $resultUsuario['id_grupo'];
 
-
-if ($boleta == $numBoleta && password_verify($contra, $hash)) { //Decripta Contraseña y Verifica Usuario
+//Decripta Contraseña y Verifica Usuario
+if ($boleta == $numBoleta && password_verify($contra, $hash)) {     
     session_start();
     $_SESSION['usuario'] = $boleta;
     $_SESSION['nombre'] = $nombreUsr;

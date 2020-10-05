@@ -2,7 +2,7 @@ let xmlHttp = null;
 
 var elemento = (id) => document.getElementById(id);
 
-window.onload = function () {
+window.onload = () => {
   let contra = elemento("passwordInp").value;
   let usr = elemento("usernameInp").value;
 
@@ -23,9 +23,17 @@ function get(url, accion) {
   xmlHttp.send();
 }
 
-function verificar() {
+function verificarUsr() {
   let nombreUsr = elemento("usernameInp").value;
-  get("../php/verificarLogin.php?nombre=" + nombreUsr, cargar);
+  let respuestaUsr = elemento("verificaUsr");
+
+  if (nombreUsr.length < 3) {
+    respuestaUsr.innerHTML = "Usuario Menor a 3 caracteres";
+    elemento("btnIngresar").disabled = true;
+  } else {
+    get("../php/verificarLogin.php?nombre=" + nombreUsr, cargar);
+    elemento("btnIngresar").disabled = false;
+  }
 }
 
 function crearXMLHttpRequest() {
@@ -41,6 +49,7 @@ function cargar() {
 
   if (xmlHttp.readyState == 4) {
     respuestaUsr.innerHTML = xmlHttp.responseText;
+
     if (respuestaUsr.innerHTML == "Usuario Inexistente") {
       elemento("btnIngresar").disabled = true;
     } else if (
@@ -55,8 +64,8 @@ function cargar() {
 function verificarInp() {
   let contra = elemento("passwordInp").value;
   let usr = elemento("usernameInp").value;
-
-  if (contra == "" || usr == "") {
+  console.log(usr.length);
+  if (contra == "" || usr == "" || usr.length < 3) {
     elemento("btnIngresar").disabled = true;
   } else {
     elemento("btnIngresar").disabled = false;

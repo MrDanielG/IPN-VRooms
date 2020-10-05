@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../css/loginStyles.css" />
-    <script src="../js/scriptLogin.js"></script>
     <title>Login Redes</title>
+    <script src="../js/scriptLogin.js"></script>
   </head>
+  <script type="text/javascript">
+    //Funcion al inicio de la pagina
+    var timerStart = Date.now();
+  </script>
   <body>
     <div class="grid-container">
       <div class="imgLogin"></div>
@@ -20,7 +24,8 @@
             name="usernameInp"
             id="usernameInp"
             placeholder="Número de Matrícula"
-            oninput="verificar()"
+            oninput="verificarUsr()"
+            required
           />
           <br />
           <div id="verificaUsr"></div>
@@ -31,6 +36,7 @@
             id="passwordInp"
             placeholder="Contraseña"
             oninput="verificarInp()"
+            required
           />
           <br />
           <div id="verificaContra"></div>
@@ -43,4 +49,10 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    //Funcion al final de la pagina
+    window.onload = () => {
+      console.log("Tiempo de carga de la pagina: ", Date.now() - timerStart);
+    };
+  </script>
 </html>
