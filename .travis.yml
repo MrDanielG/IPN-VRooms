@@ -1,0 +1,10 @@
+language: php
+
+php:
+- 7.4
+
+services: 
+- mysql
+
+before_script: echo 'Running before_script'
+script: echo 'Running script'
