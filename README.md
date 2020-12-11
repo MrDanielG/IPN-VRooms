@@ -10,10 +10,10 @@
 ## Funciones Principales
 
 __Docentes:__
-- Crear publicaciones orientadas a grupos específicos
+- Crear publicaciones dirigidas a grupos específicos
 - Crear horarios individuales por Docente
 - Subir imagenes 
 - Gestionar publicaciones (Visualizar, Eliminar, Editar)
 
 __Alumnos:__
-- Visualizar publicaciones respectivas al grupo al se es perteneciente. 
+- Visualizar publicaciones respectivas al grupo al que se es perteneciente. 
